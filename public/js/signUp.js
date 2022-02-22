@@ -2,8 +2,6 @@ const username = document.querySelector("#username");
 const password = document.querySelector("#password");
 const signUpBtn = document.querySelector("#signUpBtn");
 
-console.log(signUpBtn);
-
 const createNewUser = async (event) => {
     event.preventDefault();
 
