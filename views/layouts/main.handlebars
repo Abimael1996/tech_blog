@@ -15,7 +15,8 @@
       <li><a href="/">Home</a></li>
       <li><a href="/login">Dashboard</a></li>
       {{#if loggedIn}}
-      <li><a href="/login">Logout</a></li>  
+      <li id="logout">Logout</li>  
+      <script src="./js/logout.js"></script>
       {{else}}
       <li><a href="/login">Login</a></li>
       {{/if}}
