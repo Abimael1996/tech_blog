@@ -1,0 +1,72 @@
+header {
+    padding: 1% 0 1% 2%;
+    background-color: brown;
+}
+
+li {
+    display: inline;
+    color: white;
+    padding-right: 2%;
+    font-size: 24px;
+}
+
+h1 {
+    background-color: lightblue;
+    display: inline-block;
+    font-size: 32px;
+    border-radius: 7px;
+    padding: 10px;
+    margin-top: 10px;
+    box-shadow: 6px 5px 1px black;
+}
+body {
+    background-color: lightblue;
+}
+
+label, input, button {
+    display: block;
+}
+
+#login {
+    border: 2px solid brown;
+    margin: 2% 3% 0 3%;
+}
+
+h2 {
+    background-color: brown;
+    padding: 10px 0 10px 10px;
+    font-size: 24px;
+}
+
+#form-content {
+    margin: 10px;
+}
+
+#form-content input, button {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+label, button, a {
+    font-size: 24px;
+}
+
+input, button {
+    height: 40px;
+}
+
+button {
+    border-radius: 7px;
+    border: none;
+    background-color: gray;
+    color: white;
+}
+
+input {
+    border: none;
+    font-size: 24px;
+}
+
+label {
+    margin-bottom: 5px;
+}
