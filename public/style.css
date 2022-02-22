@@ -22,3 +22,42 @@ h1 {
 body {
     background-color: lightblue;
 }
+
+label, input, button {
+    display: block;
+}
+
+#login {
+    border: 2px solid brown;
+    margin: 2% 3% 0 3%;
+}
+
+h2 {
+    background-color: brown;
+    padding: 10px 0 10px 10px;
+    font-size: 24px;
+}
+
+#form-content {
+    margin: 10px;
+}
+
+#form-content input, button {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+label, button, a {
+    font-size: 24px;
+}
+
+input, button {
+    height: 40px;
+}
+
+button {
+    border-radius: 7px;
+    border: none;
+    background-color: gray;
+    color: white;
+}
