@@ -20,6 +20,8 @@ const createNewUser = async (event) => {
         });
         if(response.ok) {
             window.location.replace("/")
+        }else {
+            alert("Your password or username is not valid")
         }
     } catch (err) {
         console.log(err);
