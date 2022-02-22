@@ -62,6 +62,10 @@ button {
     color: white;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 input {
     border: none;
     font-size: 24px;
