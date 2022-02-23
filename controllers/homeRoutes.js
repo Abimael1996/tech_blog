@@ -23,4 +23,12 @@ router.get("/signup", async (req, res) => {
         res.status(400).json(err);
     }
 })
+
+router.get("/dashboard", async (req, res) => {
+    try {
+        res.render("dashboard", { loggedIn: req.session.loggedIn })
+    } catch (err) {
+        res.status(400).json(err);
+    }
+})
 module.exports = router;

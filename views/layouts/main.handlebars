@@ -13,21 +13,23 @@
   <nav>
     <ul>
       <li><a href="/">Home</a></li>
-      <li><a href="/login">Dashboard</a></li>
       {{#if loggedIn}}
-      <li id="logout">Logout</li>  
+      <li><a href="/dashboard">Dashboard</a></li>
+      <li id="logout">Logout</li> 
       <script src="./js/logout.js"></script>
       {{else}}
+      <li><a href="/login">Dashboard</a></li>
       <li><a href="/login">Login</a></li>
       {{/if}}
     </ul>  
   </nav>
-  <h1>The Tech Blog</h1>
+  <h1></h1>
 </header>
 <body>
   <main>
     {{{body}}}
   </main>
+  <script src="./js/title.js"></script>
 </body>
 
 </html>
