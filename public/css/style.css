@@ -27,7 +27,7 @@ label, input, button {
     display: block;
 }
 
-#login {
+.form-box {
     border: 2px solid brown;
     margin: 2% 3% 0 3%;
 }
@@ -38,11 +38,11 @@ h2 {
     font-size: 24px;
 }
 
-#form-content {
+.form-content {
     margin: 10px;
 }
 
-#form-content input, button {
+.form-content input, button, textarea {
     width: 100%;
     margin-bottom: 20px;
 }
@@ -66,9 +66,10 @@ button:hover {
     cursor: pointer;
 }
 
-input {
+input, textarea {
     border: none;
     font-size: 24px;
+    padding-left: 10px;
 }
 
 label {
@@ -77,4 +78,14 @@ label {
 
 #logout:hover {
     cursor: pointer;
+}
+
+#newPostBtn {
+    width: fit-content;
+    background-color: brown;
+    padding: 25px;
+    margin: auto;
+    font-size: 32px;
+    margin-top: 40%;
+    line-height: 5px;
 }
