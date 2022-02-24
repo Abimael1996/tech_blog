@@ -35,6 +35,25 @@ const createPostForm = () => {
     formEl.appendChild(contentLabel);
     formEl.appendChild(contentInput);
     formEl.appendChild(submitPostBtn);
+
+    submitPostBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        const newPost = {
+            title: titleInput.value,
+            content: contentInput.value,
+        };
+
+        const response = await fetch("/api/posts", {
+            method: "POST",
+            headers: { "Content-Type": "Application/JSON"},
+            body: JSON.stringify(newPost)
+        });
+        if(response.ok) {
+            window.location.reload();
+        }else {
+            alert("Something went wrong");
+        }
+    });
 }
 
 newPostBtn.addEventListener("click", createPostForm)
