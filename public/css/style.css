@@ -23,6 +23,10 @@ body {
     background-color: lightblue;
 }
 
+main {
+    margin-top: 2%;
+}
+
 label, input, button {
     display: block;
 }
@@ -55,7 +59,7 @@ input, button {
     height: 40px;
 }
 
-button {
+button, .posts {
     border-radius: 7px;
     border: none;
     background-color: gray;
@@ -86,6 +90,15 @@ label {
     padding: 25px;
     margin: auto;
     font-size: 32px;
-    margin-top: 40%;
     line-height: 5px;
+    position: relative;
+    bottom: 2%;
+}
+
+.posts {
+    margin: 2% 2% 0 2%;
+    padding: 1%;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-between;
 }
