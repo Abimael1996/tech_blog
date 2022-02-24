@@ -1,5 +1,5 @@
 module.exports = {
-    getlocation: () => {
-        return window.location.pathname;
+    format_date: (date) => {
+        return date.toLocaleDateString();
     }
 };
