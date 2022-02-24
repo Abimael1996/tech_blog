@@ -3,7 +3,17 @@ const { Post, User } = require("../models");
 
 router.get("/", async (req, res) => {
     try {
-        res.render("homepage", { loggedIn: req.session.loggedIn });
+        const postData = await Post.findAll({
+            include: [
+                {
+                    model: User,
+                    attributes: ["username"]
+                }
+            ]
+        });
+        const posts = postData.map((post) => post.get({plain: true})).reverse();
+        console.log(posts);
+        res.render("homepage", { posts, loggedIn: req.session.loggedIn });
     } catch (err) {
         res.status(400).json(err);
     }
@@ -33,8 +43,7 @@ router.get("/dashboard", async (req, res) => {
             },
             include: [
                 {
-                    model: User,
-                    attributes: ["username"]
+                    model: User
                 }
             ]
         });

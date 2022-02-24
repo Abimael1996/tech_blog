@@ -38,8 +38,10 @@ label, input, button {
 
 h2 {
     background-color: brown;
-    padding: 10px 0 10px 10px;
+    padding: 10px 10px 10px 10px;
     font-size: 24px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .form-content {
@@ -101,4 +103,12 @@ label {
     font-size: 24px;
     display: flex;
     justify-content: space-between;
+}
+
+.postInfo {
+    font-size: 16px;
+}
+
+.contentText {
+    padding: 10px;
 }
