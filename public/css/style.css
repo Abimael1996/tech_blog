@@ -112,3 +112,13 @@ label {
 .contentText {
     padding: 10px;
 }
+
+.postLink {
+    color: black;
+    width: 79%;
+}
+
+.postLink:hover {
+    color: white;
+    cursor: pointer;
+}
