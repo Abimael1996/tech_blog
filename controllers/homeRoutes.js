@@ -38,7 +38,7 @@ router.get("/dashboard", async (req, res) => {
                 }
             ]
         });
-        const posts = postsData.map((post) => post.get({plain: true}));
+        const posts = postsData.map((post) => post.get({plain: true})).reverse();
         console.log(posts);
         res.render("dashboard", {posts, loggedIn: req.session.loggedIn})
     } catch (err) {
