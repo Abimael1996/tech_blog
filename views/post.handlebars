@@ -5,13 +5,16 @@
   </div>
 </section>
 
+{{#if loggedIn}}
 <section class="form-box">
   <h2></h2>
   <div class="form-content">
     <form>
       <label for="comment">Comment</label>
       <textarea id="comment" name="comment"></textarea>
-      <button type="submit" id="commentBtn">Submit</button>
+      <button type="submit" id="commentBtn" data-post="{{id}}">Submit</button>
     </form>
   </div>
 </section>
+<script src="/js/comment.js"></script>
+{{/if}}
