@@ -7,7 +7,9 @@ router.post("/", async (req, res) => {
             ...req.body,
             username: req.session.userName,
         });
-        console.log(commentData);
+        const comment = commentData.get({plain: true});
+        console.log(comment);
+        res.status(200).json(comment);
     }catch(err) {
         res.status(400).json(err)
     }

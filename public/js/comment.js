@@ -1,5 +1,6 @@
 const submitComment = document.querySelector("#commentBtn");
 const comment = document.querySelector("#comment");
+
 const postComment = async (event) => {
     event.preventDefault();
     const post_id = submitComment.getAttribute("data-post");
@@ -13,6 +14,11 @@ const postComment = async (event) => {
         headers: {"Content-Type": "Application/JSON"},
         body: JSON.stringify(newComment),
     });
+    if(response.ok){
+        window.location.reload();
+    }else{
+        alert("Something went wrong");
+    }
 
 }
 

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User } = require("../models");
+const { Post, User, Comment } = require("../models");
 
 router.get("/", async (req, res) => {
     try {
@@ -57,6 +57,9 @@ router.get("/posts/:id", async (req, res) => {
                 {
                     model: User,
                     attributes: ["username"]
+                },
+                {
+                    model: Comment,
                 }
             ]
         });
