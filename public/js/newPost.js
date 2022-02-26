@@ -21,12 +21,32 @@ const deleteRequest = (deletePostBtn, postId) => {
     })
 }
 
+const updateRequest = (updatePostBtn, postId, postTitle, postContent) => {
+    updatePostBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        const updatedPost = {
+            title: postTitle.value,
+            content: postContent.value,
+        };
+       const result = await fetch(`/api/posts/${postId}`, {
+            method: "PUT",
+            headers: { "Content-Type": "Application/JSON"},
+            body: JSON.stringify(updatedPost),
+        });
+        if(result.ok){
+            window.location.reload();
+        }else{
+            alert("Something went wrong");
+        } 
+    })
+}
+
 const editPostForm = (post, postId) => {
     post.addEventListener("click", async (e) => {
         e.preventDefault();
         newPostBtn.remove();
         removePosts();
-        createPost("Edit Post", "Update Post");
+        createPost("Edit Post", "Update Post", "updateBtn");
         const form = document.querySelector("form");
         const deletePostBtn = document.createElement("button");
         deletePostBtn.setAttribute("type", "submit");
@@ -44,6 +64,10 @@ const editPostForm = (post, postId) => {
         postContent.value = postData.content;
     
         deleteRequest(deletePostBtn, postId);
+
+        const updatePostBtn = document.querySelector("#updateBtn");
+
+        updateRequest(updatePostBtn, postId, postTitle, postContent);
     })
 }
 
@@ -52,7 +76,7 @@ for (const post of posts) {
     editPostForm(post, postId)
 }
 
-const createPost = (header, btnText) => {
+const createPost = (header, btnText, btnId) => {
     const mainEl = document.querySelector("main");
     const sectionEl = document.createElement("section");
     const h2El = document.createElement("h2");
@@ -75,7 +99,7 @@ const createPost = (header, btnText) => {
     contentInput.setAttribute("name", "content");
     const submitPostBtn = document.createElement("button");
     submitPostBtn.setAttribute("type", "submit");
-    submitPostBtn.setAttribute("id", "submitPost");
+    submitPostBtn.setAttribute("id", btnId);
     submitPostBtn.textContent = btnText;
 
     mainEl.prepend(sectionEl);
@@ -113,7 +137,7 @@ const fetchPost = (submitPostBtn, titleInput, contentInput) => {
 const createPostForm = () => {
     newPostBtn.remove();
     removePosts();
-    createPost("Create New Post", "Create");
+    createPost("Create New Post", "Create", "submitPost");
     const submitPostBtn = document.querySelector("#submitPost");
     const titleInput = document.querySelector("#title");
     const contentInput = document.querySelector("#content");
