@@ -21,24 +21,35 @@ const deleteRequest = (deletePostBtn, postId) => {
     })
 }
 
-const editPostForm = (e) => {
-    e.preventDefault();
-    console.log(e.target.getAttribute("id"));
-    newPostBtn.remove();
-    removePosts();
-    createPost("Edit Post", "Update Post");
-    const form = document.querySelector("form");
-    const deletePostBtn = document.createElement("button");
-    deletePostBtn.setAttribute("type", "submit");
-    deletePostBtn.setAttribute("id", "deletePost");
-    deletePostBtn.textContent = "Delete";
-    form.appendChild(deletePostBtn);
-    const postId = e.target.getAttribute("id");
-    deleteRequest(deletePostBtn, postId);
+const editPostForm = (post, postId) => {
+    post.addEventListener("click", async (e) => {
+        e.preventDefault();
+        newPostBtn.remove();
+        removePosts();
+        createPost("Edit Post", "Update Post");
+        const form = document.querySelector("form");
+        const deletePostBtn = document.createElement("button");
+        deletePostBtn.setAttribute("type", "submit");
+        deletePostBtn.setAttribute("id", "deletePost");
+        deletePostBtn.textContent = "Delete";
+        form.appendChild(deletePostBtn);
+    
+        const response = await fetch(`/api/posts/${postId}`);
+        const postData = await response.json();
+    
+        const postTitle = document.querySelector("#title");
+        const postContent = document.querySelector("#content");
+    
+        postTitle.value = postData.title;
+        postContent.value = postData.content;
+    
+        deleteRequest(deletePostBtn, postId);
+    })
 }
 
 for (const post of posts) {
-    post.addEventListener("click", editPostForm)
+    const postId = post.getAttribute("id");
+    editPostForm(post, postId)
 }
 
 const createPost = (header, btnText) => {

@@ -14,6 +14,15 @@ router.post("/", async (req, res) => {
     }
 });
 
+router.get("/:id", async (req, res) => {
+    try {
+        const post = await Post.findByPk(req.params.id);
+        res.status(200).json(post);
+    }catch(err) {
+        res.status(400).json(err);
+    }
+});
+
 router.delete("/:id", async (req, res) => {
     try {
         const deletedPost = await Post.destroy({
