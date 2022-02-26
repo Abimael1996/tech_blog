@@ -1,11 +1,33 @@
 const newPostBtn = document.querySelector("#newPostBtn");
+const posts = document.querySelectorAll(".posts");
 
-const createPostForm = () => {
+const removePosts = () => {
+    for (const post of posts) {
+        post.remove();
+    }
+}
+
+const editPostForm = (e) => {
+    e.preventDefault();
     newPostBtn.remove();
+    removePosts();
+    createPost("Edit Post", "Update Post");
+    const form = document.querySelector("form");
+    const deletePostBtn = document.createElement("button");
+    deletePostBtn.setAttribute("type", "submit");
+    deletePostBtn.setAttribute("id", "deletePost");
+    deletePostBtn.textContent = "Delete";
+    form.appendChild(deletePostBtn);
+}
+for (const post of posts) {
+    post.addEventListener("click", editPostForm)
+}
+
+const createPost = (header, btnText) => {
     const mainEl = document.querySelector("main");
     const sectionEl = document.createElement("section");
     const h2El = document.createElement("h2");
-    h2El.textContent = "Create New Post";
+    h2El.textContent = header;
     sectionEl.setAttribute("class", "form-box");
     const divEl = document.createElement("div");
     divEl.setAttribute("class", "form-content");
@@ -24,7 +46,8 @@ const createPostForm = () => {
     contentInput.setAttribute("name", "content");
     const submitPostBtn = document.createElement("button");
     submitPostBtn.setAttribute("type", "submit");
-    submitPostBtn.textContent = "Create";
+    submitPostBtn.setAttribute("id", "submitPost");
+    submitPostBtn.textContent = btnText;
 
     mainEl.prepend(sectionEl);
     sectionEl.appendChild(h2El);
@@ -35,7 +58,9 @@ const createPostForm = () => {
     formEl.appendChild(contentLabel);
     formEl.appendChild(contentInput);
     formEl.appendChild(submitPostBtn);
+}
 
+const fetchPost = (submitPostBtn, titleInput, contentInput) => {
     submitPostBtn.addEventListener("click", async (e) => {
         e.preventDefault();
         const newPost = {
@@ -45,15 +70,25 @@ const createPostForm = () => {
 
         const response = await fetch("/api/posts", {
             method: "POST",
-            headers: { "Content-Type": "Application/JSON"},
+            headers: { "Content-Type": "Application/JSON" },
             body: JSON.stringify(newPost)
         });
-        if(response.ok) {
+        if (response.ok) {
             window.location.reload();
-        }else {
+        } else {
             alert("Something went wrong");
         }
     });
+}
+
+const createPostForm = () => {
+    newPostBtn.remove();
+    removePosts();
+    createPost("Create New Post", "Create");
+    const submitPostBtn = document.querySelector("#submitPost");
+    const titleInput = document.querySelector("#title");
+    const contentInput = document.querySelector("#content");
+    fetchPost(submitPostBtn, titleInput, contentInput);
 }
 
 newPostBtn.addEventListener("click", createPostForm)

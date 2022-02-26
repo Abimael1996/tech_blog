@@ -1,4 +1,4 @@
-<section class="form-box" id="postBox">
+<section class="form-box">
   <h2>{{title}}<span class="postInfo">Posted by {{user.username}} on {{format_date date_posted}}</span></h2>
   <div class="contentText">
     <p>{{content}}</p>
@@ -6,7 +6,7 @@
 </section>
 
 {{#each comments as |comment|}}
-<section class="form-box" id="postBox">
+<section class="form-box">
   <h2></h2>
   <div class="contentText">
     <p>{{comment.content}}</p>
