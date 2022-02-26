@@ -7,8 +7,23 @@ const removePosts = () => {
     }
 }
 
+const deleteRequest = (deletePostBtn, postId) => {
+    deletePostBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        const result = await fetch(`/api/posts/${postId}`, {
+            method: "DELETE",
+        });
+        if(result.ok){
+            window.location.reload();
+        }else{
+            alert("Something went wrong");
+        }
+    })
+}
+
 const editPostForm = (e) => {
     e.preventDefault();
+    console.log(e.target.getAttribute("id"));
     newPostBtn.remove();
     removePosts();
     createPost("Edit Post", "Update Post");
@@ -18,7 +33,10 @@ const editPostForm = (e) => {
     deletePostBtn.setAttribute("id", "deletePost");
     deletePostBtn.textContent = "Delete";
     form.appendChild(deletePostBtn);
+    const postId = e.target.getAttribute("id");
+    deleteRequest(deletePostBtn, postId);
 }
+
 for (const post of posts) {
     post.addEventListener("click", editPostForm)
 }

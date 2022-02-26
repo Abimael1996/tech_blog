@@ -1,6 +1,6 @@
 <button type="button" id="newPostBtn">+ New Post</button>
 {{#each posts as |post|}}
-<div class="posts">
+<div class="posts" id={{post.id}}>
   <p>{{post.title}}</p>
   <p>{{format_date post.date_posted}}</p>
 </div>
